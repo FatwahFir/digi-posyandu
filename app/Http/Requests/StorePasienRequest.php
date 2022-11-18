@@ -33,7 +33,6 @@ class StorePasienRequest extends FormRequest
             'pb_lahir' => 'required|numeric',
             'kia' => 'required',
             'imd' => 'required',
-            'no_kk' => 'required',
             'id_posyandu' => 'required',
         ];
     }

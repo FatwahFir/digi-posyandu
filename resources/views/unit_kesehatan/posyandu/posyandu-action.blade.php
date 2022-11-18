@@ -5,7 +5,7 @@
             @method('put')
         @endif
         <div class="modal-header">
-            <h5 class="modal-title" id="largeModalLabel">Tambah Posyandu</h5>
+            <h5 class="modal-title" id="largeModalLabel">{{ $posyandu->id ? 'Edit' : 'Tambah' }} Data</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-label="Close"></button>
         </div>
@@ -23,6 +23,13 @@
                 <option value="">--</option>
                 @foreach ($desa as $data)
                     <option value="{{ $data->id }}" {{ $data->id == $posyandu->id_desa ? 'selected' : '' }} >{{ $data->nama_desa }}</option>
+                @endforeach
+            </select>
+            <label>Puskesmas</label>
+            <select class="form-select mb-3" aria-label="Default select example" name="id_puskesmas">
+                <option value="">--</option>
+                @foreach ($puskesmas as $data)
+                    <option value="{{ $data->id }}" {{ $data->id == $posyandu->id_puskesmas ? 'selected' : '' }} >{{ $data->nama_puskesmas }}</option>
                 @endforeach
             </select>
         </div>

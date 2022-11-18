@@ -23,10 +23,14 @@ class GiziDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function ($gizi){
-                return '
-                    <button class="btn btn-info btn-sm action" data-id="'.$gizi->no_pemeriksaan_gizi.'" data-jenis="edit"><i class="ti-pencil"></i></button>
+        ->addColumn('action', function ($gizi){
+                if(auth()->user()->can('update gizi')){
+                    $action = '<button class="btn btn-info btn-sm action" data-id="'.$gizi->no_pemeriksaan_gizi.'" data-jenis="edit"><i class="ti-pencil"></i></button>
                     <button class="btn btn-danger btn-sm action" data-id="'.$gizi->no_pemeriksaan_gizi.'" data-jenis="delete"><i class="ti-trash"></i></button>';
+                }else{
+                    $action = '-';
+                }
+                return $action;
             })
             ->addColumn('detail', function ($gizi){
                 return '
@@ -72,6 +76,8 @@ class GiziDataTable extends DataTable
                     ->setTableId('gizi-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
+                    ->autoWidth(false)
+                    ->responsive(true)
                     // ->dom('Bfrtip')
                     ->orderBy(1);
                     // ->buttons(

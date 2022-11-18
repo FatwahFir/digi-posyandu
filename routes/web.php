@@ -41,17 +41,24 @@ Route::get('/dashboard', function () {
 ->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function (){
+
     Route::resource('/users/admin', RoleController::class);
     Route::resource('/users/admin-puskesmas', AdminPuskesmasController::class);
     Route::resource('/users/bidan', BidanController::class);
     Route::resource('/users/kader', KaderController::class);
+
     Route::resource('/wilayah/kecamatan', KecamatanController::class);
     Route::resource('/wilayah/desa', DesaController::class);
+
     Route::resource('/pasien/keluarga', KeluargaController::class);
+    Route::get('/pasien/data-pasien/{id}/riwayat', [PasienController::class, 'riwayat']);
     Route::resource('/pasien/data-pasien', PasienController::class);
+
     Route::resource('/unit-kesehatan/posyandu', PosyanduController::class);
     Route::resource('/unit-kesehatan/puskesmas', PuskesmasController::class);
+
     Route::resource('/imunisasi/jenis-imunisasi', JenisImunisasiController::class);
+
     Route::resource('/gizi/data-gizi', GiziController::class);
     Route::get('/gizi/data-gizi/{id}/create', [GiziController::class, 'create']);
     Route::get('/gizi/data-gizi/data-anak/{id}', [GiziController::class, 'dataAnak']);

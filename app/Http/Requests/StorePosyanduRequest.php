@@ -26,7 +26,8 @@ class StorePosyanduRequest extends FormRequest
         return [
             'nama_posyandu' => 'required',
             'rw' => 'required|numeric',
-            'id_desa' => 'required'
+            'id_desa' => 'required',
+            'id_puskesmas' => 'required'
         ];
     }
 }

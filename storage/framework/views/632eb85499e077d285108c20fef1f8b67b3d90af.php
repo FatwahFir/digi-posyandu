@@ -26,19 +26,16 @@
             <li>
                 <hr class="mt-4">
             </li>
-            <li class="<?php echo e(request()->segment(1) == 'gizi' ? 'active open' : ''); ?>">
-                <a href="#" class="main-menu has-dropdown">
-                    <i class="ti-desktop"></i>
-                    <span>Gizi</span>
+            <li class="<?php echo e(request()->segment(1) == '' || request()->segment(1) ==  'gizi' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('data-gizi.index')); ?>" class="link">
+                    <i class="ti-briefcase"></i>
+                    <span>Data Gizi</span>
                 </a>
-                <ul class="sub-menu <?php echo e(request()->segment(1) == 'gizi' ? 'expand' : ''); ?>">
-                    <li class="<?php echo e(request()->segment(2) == 'data-gizi' ? 'active' : ''); ?>"><a href="<?php echo e(route('data-gizi.index')); ?>" class="link"><span>Data Pemeriksaan Gizi</span></a></li>
-                    <li><a href="element-ui.html" class="link"><span>Riwayat</span></a></li>
-                </ul>
             </li>
+            
             <li class="<?php echo e(request()->segment(1) == 'imunisasi' ? 'active open' : ''); ?>">
                 <a href="#" class="main-menu has-dropdown">
-                    <i class="ti-desktop"></i>
+                    <i class="ti-shield"></i>
                     <span>Imunisasi</span>
                 </a>
                 <ul class="sub-menu <?php echo e(request()->segment(1) == 'imunisasi' ? 'expand' : ''); ?>">
@@ -81,16 +78,15 @@
                     <li class="<?php echo e(request()->segment(2) == 'kader' ? 'active' : ''); ?>"><a href="<?php echo e(route('kader.index')); ?>" class="link"><span>Kader</span></a></li>
                 </ul>
             </li>
-            <li class="<?php echo e(request()->segment(1) == 'pasien' ? 'active open' : ''); ?>">
-                <a href="#" class="main-menu has-dropdown">
+            <li class="<?php echo e(request()->segment(1) ==  'pasien' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('data-pasien.index')); ?>" class="link">
                     <i class="ti-basketball"></i>
                     <span>Anak</span>
                 </a>
-                <ul class="sub-menu <?php echo e(request()->segment(1) == 'pasien' ? 'expand' : ''); ?>">
-                    <li class="<?php echo e(request()->segment(2) == 'data-pasien' ? 'active' : ''); ?>"><a href="<?php echo e(route('data-pasien.index')); ?>" class="link"><span>Data Anak</span></a></li>
-                    <li class="<?php echo e(request()->segment(2) == 'keluarga' ? 'active' : ''); ?>"><a href="<?php echo e(route('keluarga.index')); ?>" class="link"><span>Data Keluarga</span></a></li>
-                </ul>
             </li>
+            
+                
+             
         </ul>
     </div>
 </nav>  <?php /**PATH D:\Developement\DigiPosyandu\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>

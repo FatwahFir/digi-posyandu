@@ -26,7 +26,13 @@
             <li>
                 <hr class="mt-4">
             </li>
-            <li class="{{ request()->segment(1) == 'gizi' ? 'active open' : '' }}">
+            <li class="{{ request()->segment(1) == '' || request()->segment(1) ==  'gizi' ? 'active' : '' }}">
+                <a href="{{ route('data-gizi.index') }}" class="link">
+                    <i class="ti-briefcase"></i>
+                    <span>Data Gizi</span>
+                </a>
+            </li>
+            {{-- <li class="{{ request()->segment(1) == 'gizi' ? 'active open' : '' }}">
                 <a href="#" class="main-menu has-dropdown">
                     <i class="ti-desktop"></i>
                     <span>Gizi</span>
@@ -35,10 +41,10 @@
                     <li class="{{ request()->segment(2) == 'data-gizi' ? 'active' : '' }}"><a href="{{ route('data-gizi.index') }}" class="link"><span>Data Pemeriksaan Gizi</span></a></li>
                     <li><a href="element-ui.html" class="link"><span>Riwayat</span></a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="{{ request()->segment(1) == 'imunisasi' ? 'active open' : '' }}">
                 <a href="#" class="main-menu has-dropdown">
-                    <i class="ti-desktop"></i>
+                    <i class="ti-shield"></i>
                     <span>Imunisasi</span>
                 </a>
                 <ul class="sub-menu {{ request()->segment(1) == 'imunisasi' ? 'expand' : '' }}">
@@ -81,16 +87,22 @@
                     <li class="{{ request()->segment(2) == 'kader' ? 'active' : '' }}"><a href="{{ route('kader.index') }}" class="link"><span>Kader</span></a></li>
                 </ul>
             </li>
-            <li class="{{ request()->segment(1) == 'pasien' ? 'active open' : '' }}">
-                <a href="#" class="main-menu has-dropdown">
+            <li class="{{ request()->segment(1) ==  'pasien' ? 'active' : '' }}">
+                <a href="{{ route('data-pasien.index') }}" class="link">
                     <i class="ti-basketball"></i>
                     <span>Anak</span>
                 </a>
-                <ul class="sub-menu {{ request()->segment(1) == 'pasien' ? 'expand' : '' }}">
-                    <li class="{{ request()->segment(2) == 'data-pasien' ? 'active' : '' }}"><a href="{{ route('data-pasien.index') }}" class="link"><span>Data Anak</span></a></li>
-                    <li class="{{ request()->segment(2) == 'keluarga' ? 'active' : '' }}"><a href="{{ route('keluarga.index') }}" class="link"><span>Data Keluarga</span></a></li>
-                </ul>
             </li>
+            {{-- <li class="{{ request()->segment(1) == 'pasien' ? 'active' : '' }}">
+                <a href="{{ route('data-pasien.index') }}" class="main-menu has-dropdown">
+                    <i class="ti-basketball"></i>
+                    <span>Anak</span>
+                </a>
+                {{-- <ul class="sub-menu {{ request()->segment(1) == 'pasien' ? 'expand' : '' }}">
+                    <li class="{{ request()->segment(2) == 'data-pasien' ? 'active' : '' }}"><a href="{{ route('data-pasien.index') }}" class="link"><span>Data Anak</span></a></li>
+                    {{-- <li class="{{ request()->segmet(2) == 'keluarga' ? 'active' : '' }}"><a href="{{ route('keluarga.index') }}" class="link"><span>Data Keluarga</span></a></li> --}}
+                {{-- </ul> --}}
+            {{-- </li> --}} 
         </ul>
     </div>
 </nav>  

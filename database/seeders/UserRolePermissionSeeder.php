@@ -53,16 +53,125 @@ class UserRolePermissionSeeder extends Seeder
             $roleKader = Role::create(['name' => 'kader']);
             $roleBidan = Role::create(['name' => 'bidan']);
     
-            $permission = Permission::create(['name' => 'read']);
-            $permission = Permission::create(['name' => 'create']);
-            $permission = Permission::create(['name' => 'update']);
-            $permission = Permission::create(['name' => 'delete']);
+            // $permission = Permission::create(['name' => 'read']);
+            // $permission = Permission::create(['name' => 'create']);
+            // $permission = Permission::create(['name' => 'update']);
+            // $permission = Permission::create(['name' => 'delete']);
+
+                    $permission = Permission::create(['name' => 'read wilayah']);
+            
+                
+                    $permission = Permission::create(['name' => 'create wilayah']);
+                
+                
+                    $permission = Permission::create(['name' => 'update wilayah']);
+                
+                
+                    $permission = Permission::create(['name' => 'delete wilayah']);
+                
+                
+                    $permission = Permission::create(['name' => 'read puskesmas']);
+                
+                
+                    $permission = Permission::create(['name' => 'create puskesmas']);
+                
+                
+                    $permission = Permission::create(['name' => 'update puskesmas']);
+                
+                
+                    $permission = Permission::create(['name' => 'delete puskesmas']);
+                
+                
+                    $permission = Permission::create(['name' => 'read gizi']);
+                
+                
+                    $permission = Permission::create(['name' => 'create gizi']);
+                
+                
+                    $permission = Permission::create(['name' => 'update gizi']);
+                
+                
+                    $permission = Permission::create(['name' => 'delete gizi']);
+                
+                
+                    $permission = Permission::create(['name' => 'read posyandu']);
+                
+                
+                    $permission = Permission::create(['name' => 'create posyandu']);
+                
+                
+                    $permission = Permission::create(['name' => 'update posyandu']);
+                
+                
+                    $permission = Permission::create(['name' => 'delete posyandu']);
+                
+                    $permission = Permission::create(['name' => 'read bidan']);
+                
+                    $permission = Permission::create(['name' => 'create bidan']);
+                
+                
+                    $permission = Permission::create(['name' => 'update bidan']);
+                
+                
+                    $permission = Permission::create(['name' => 'delete bidan']);
+                
+                
+                    $permission = Permission::create(['name' => 'read kader']);
+                
+                
+                    $permission = Permission::create(['name' => 'create kader']);
+                
+                
+                    $permission = Permission::create(['name' => 'update kader']);
+                
+            
+                    $permission = Permission::create(['name' => 'delete kader']);
 
             $roleSuperAdmin->givePermissionTo([
-                'create',
-                'read',
-                'update',
-                'delete'
+                'create wilayah',
+                'read wilayah',
+                'update wilayah',
+                'delete wilayah',
+                'create puskesmas',
+                'read puskesmas',
+                'update puskesmas',
+                'delete puskesmas',
+                'read gizi'
+            ]);
+
+            $roleAdminPuskesmas->givePermissionTo([
+                'create posyandu',
+                'read posyandu',
+                'update posyandu',
+                'delete posyandu',
+                'create bidan',
+                'read bidan',
+                'update bidan',
+                'delete bidan',
+                'create kader',
+                'read kader',
+                'update kader',
+                'delete kader',
+                'read gizi'
+            ]);
+
+            $roleKader->givePermissionTo([
+                'create gizi',
+                'read gizi',
+                'update gizi',
+                'delete gizi',
+                'create anak',
+                'read anak',
+                'update anak',
+                'delete anak',
+                'create imunisasi',
+                'read imunisasi',
+                'update imunisasi',
+                'delete imunisasi',
+            ]);
+
+            $roleBidan->givePermissionTo([
+                'read gizi'
             ]);
             
             $superAdmin->assignRole('super admin');

@@ -16,7 +16,9 @@
                         <h4>Data Anak</h4>
                     </div>
                     <div class="card-body">
+                        @can('create anak')
                         <button type="button" class="mb-3 btn btn-primary btn-add"><span class="ti-plus"></span> Tambah Data</button>
+                        @endcan
                         {{ $dataTable->table() }}
                     </div>
                 </div>
@@ -93,7 +95,34 @@
             })
             // console.log('masuk');
         })
+        
+        //Riwayat
+        $('#pasien-table').on('click', '.riwayat', function(){
+            let data = $(this).data()
+            let id = data.id
+            let jenis = data.jenis
 
+            $.ajax({
+                method: 'get',
+                url: `{{ url('pasien/data-pasien/')}}/${id}/riwayat`,
+                success: function(res){
+                    $('#modalAction').find('.modal-dialog').html(res)
+                    modal.show()
+                    store()
+                }
+                // error: function(res){
+                //         let errors = res.responseJSON?.errors
+                //         $(_form).find('.text-danger.text-small').remove()
+                //         if(errors){
+                //             for(const [key, value] of Object.entries(errors)){
+                //                 $(`[name='${key}']`).parent().append(`<span class="text-danger text-small">${value}</span>`)
+                //                 $(`[name='${key}']`).addClass('is-invalid')
+                //             }
+                //         }
+                //     }
+            })
+            // console.log('masuk');
+        })
         //editPasiens
         $('#pasien-table').on('click','.action', function(){
             let data = $(this).data()

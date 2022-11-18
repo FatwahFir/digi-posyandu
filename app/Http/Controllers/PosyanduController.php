@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Desa;
 use App\Models\Posyandu;
+use App\Models\Puskesmas;
 use App\DataTables\PosyanduDataTable;
 use App\Http\Requests\StorePosyanduRequest;
 use App\Http\Requests\UpdatePosyanduRequest;
@@ -30,7 +31,8 @@ class PosyanduController extends Controller
     {
         $desa = Desa::get();
         $posyandu = new Posyandu();
-        return view('unit_kesehatan.posyandu.posyandu-action', compact('desa','posyandu'));
+        $puskesmas = Puskesmas::get();
+        return view('unit_kesehatan.posyandu.posyandu-action', compact('desa','posyandu', 'puskesmas'));
     }
 
     /**
@@ -69,7 +71,8 @@ class PosyanduController extends Controller
     public function edit(Posyandu $posyandu)
     {
         $desa = Desa::get();
-        return view('unit_kesehatan.posyandu.posyandu-action', compact('posyandu', 'desa'));
+        $puskesmas = Puskesmas::get();
+        return view('unit_kesehatan.posyandu.posyandu-action', compact('posyandu', 'desa', 'puskesmas'));
     }
 
     /**
@@ -84,7 +87,8 @@ class PosyanduController extends Controller
         $posyandu->nama_posyandu = $request->nama_posyandu;
         $posyandu->rw = $request->rw;
         $posyandu->id_desa = $request->id_desa;
-        $posyandu->save();
+        $posyandu->id_puskesmas = $request->id_puskesmas;
+        $posyandu->update();
 
         return response()->json([
             'status' => 'Sukses',

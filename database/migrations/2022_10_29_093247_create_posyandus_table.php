@@ -18,6 +18,7 @@ return new class extends Migration
             $table->char('nama_posyandu',50); 
             $table->char('rw',5); 
             $table->foreignId('id_desa');
+            $table->foreignId('id_puskesmas');
             $table->timestamps();
             $table->softDeletes();
         });

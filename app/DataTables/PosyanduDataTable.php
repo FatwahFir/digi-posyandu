@@ -28,9 +28,6 @@ class PosyanduDataTable extends DataTable
                     <button class="btn btn-info btn-sm action" data-id="'.$posyandu->id.'" data-jenis="edit"><i class="ti-pencil"></i></button>
                     <button class="btn btn-danger btn-sm action" data-id="'.$posyandu->id.'" data-jenis="delete"><i class="ti-trash"></i></button>';
             })
-            ->addColumn('desa', function ($posyandu){
-                return $posyandu->desa->nama_desa;
-            })
             ->addIndexColumn()
             ->setRowId('id');
     }
@@ -43,7 +40,7 @@ class PosyanduDataTable extends DataTable
      */
     public function query(Posyandu $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['puskesmas', 'desa']);
     }
 
     /**
@@ -78,7 +75,8 @@ class PosyanduDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->searchable(false)->orderable(false)->title('No')->addClass('text-center'),
             Column::make('nama_posyandu')->addClass('text-center'),
-            Column::make('desa')->addClass('text-center'),
+            Column::make('desa.nama_desa')->addClass('text-center')->orderable(false)->title('Desa'),
+            Column::make('puskesmas.nama_puskesmas')->addClass('text-center')->orderable(false)->title('Puskesmas'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

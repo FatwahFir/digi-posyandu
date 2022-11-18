@@ -84,14 +84,15 @@ class BidanController extends Controller
     {
         $user = User::findOrFail($id);
         $rules = [
-            'name' => 'required|max:255',
-            'password' => 'required|min:6|max:255'
+            'name' => 'required|max:255'
+            // 'password' => 'required|min:6|max:255'
         ];
         if($request->username != $user->username){
             $rules['username'] = 'required|unique:users|min:6';
         }
 
         $validatedData = $request->validate($rules);
+        $validatedData['password'] = bcrypt('password');
 
         User::where('id', $id)->update($validatedData);
 

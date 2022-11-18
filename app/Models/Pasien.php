@@ -12,7 +12,7 @@ class Pasien extends Model
     protected $guarded = ['id'];
 
     public function keluarga(){
-        return $this->belongsTo(Keluarga::class, 'no_kk', 'no_kk');
+        return $this->belongsTo(Keluarga::class, 'no_kk', 'no_kk')->withDefault(['no_kk' => '-']);
     }
 
     public function posyandu(){

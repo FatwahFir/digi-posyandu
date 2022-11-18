@@ -25,7 +25,7 @@ class PasienDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($pasien){
                 return '
-                <button class="btn btn-outline-primary mb-1 btn-sm action-riwayat" data-id="'.$pasien->id.'"><i class="ti-book"></i> Riwayat</button>
+                <button class="btn btn-outline-primary mb-1 btn-sm riwayat" data-id="'.$pasien->id.'"><i class="ti-book"></i> Riwayat</button>
                     <button class="btn btn-info btn-sm action" data-id="'.$pasien->id.'" data-jenis="edit"><i class="ti-pencil"></i></button>
                     <button class="btn btn-danger btn-sm action" data-id="'.$pasien->id.'" data-jenis="delete"><i class="ti-trash"></i></button>';
             })
